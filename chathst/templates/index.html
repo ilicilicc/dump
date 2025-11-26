@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatHST - Large Context</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <div class="sidebar">
+            <h3>HST Controls</h3>
+            <div class="control-group">
+                <label for="model-version">Model Version</label>
+                <select id="model-version">
+                    <option value="v6_giga">v6 Giga</option>
+                    <option value="v7_1_ultimate">v7.1 Ultimate</option>
+                </select>
+            </div>
+            <hr>
+            <div id="speculative-decoding-controls" class="control-group">
+                <h4>Speculative Decoding</h4>
+                <label for="horizon">Horizon</label>
+                <input type="range" id="horizon" min="1" max="64" step="1" value="16">
+            </div>
+            <hr>
+            <div id="context-injection-controls" class="control-group">
+                <h4>Context Injection</h4>
+                <textarea id="context-injection" placeholder="Paste a large body of text here..."></textarea>
+                <input type="file" id="file-upload" class="hidden">
+                <button id="file-upload-btn" class="file-btn">Upload a Book (.txt)</button>
+                <p id="file-status"></p>
+                <button id="inject-context-btn">Inject Context</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h2>ChatHST - Large Context Edition</h2>
+                </div>
+                <div class="chat-box">
+                    <!-- Chat messages will be displayed here -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="user-input" placeholder="Ask a question about the context...">
+                    <button id="send-btn">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
