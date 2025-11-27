@@ -314,59 +314,41 @@ class FullLatticeFieldAnalyzer(nn.Module):
                     self.lattice_structure[pos] = self._analyze_position(pos)
 
     def _generate_full_lattice(self, max_len, num_levels):
-        """Generates all levels of the lattice based on the additive rules."""
+        """
+        Generates all levels of the lattice programmatically using the recurrence
+        relation a_n = 2*a_{n-1} + a_{n-2}.
+        """
+
+        def _generate_sequence(a0, a1, max_val):
+            """Generates a sequence based on the recurrence until it exceeds max_val."""
+            seq = [a0, a1]
+            while seq[-1] < max_val:
+                next_val = 2 * seq[-1] + seq[-2]
+                if next_val >= max_val:
+                    break
+                seq.append(next_val)
+            return seq
+
+        # Initial conditions for the 8 rows from the user's table
+        initial_conditions = [
+            (0, 2), (2, 6), (0, 4), (4, 4),
+            (0, 8), (8, 0), (0, 16), (16, 16)
+        ]
+
         lattice = []
-        parent_map = {} # {child: [parent1, parent2]}
+        for a0, a1 in initial_conditions:
+            lattice.append(_generate_sequence(a0, a1, max_len))
 
-        # Initialize the base level (level N-1) with a simple sequence (e.g., powers of 2)
-        # This is an assumption, as the diagram doesn't specify the lowest level's origin.
-        # Let's start with a sequence that promotes integer values throughout.
-        base_level = [2**i for i in range(max_len)]
-        lattice.append(base_level)
-
-        # Generate subsequent levels by summing parents
-        for level_idx in range(1, num_levels):
-            new_level = []
-            # The first element of each level is taken from the previous level's second element,
-            # minus the first. This is derived from observing the pattern 4->(2,2), 10->(4,6) etc.
-            # Let's try to make a simple starting point, like level[i][0] = level[i-1][1] - level[i-1][0]
-            # Based on the diagram, the first elements appear to be powers of 2.
-            # Let's define the starting points explicitly to match the diagram.
-
-            # Reset and generate from a known base to match the diagram's structure
-            # Level 0: 0, 16, 16, 32, 48, ... (seems complex)
-            # Let's manually define the first few levels based on the image
-
-            # Manually define the starting sequences from the image to ensure correctness
-            sequences = [
-                [0, 2, 4, 10, 24, 58, 140, 338, 816],
-                [2, 2, 6, 14, 34, 82, 198, 478, 1154],
-                [0, 4, 8, 20, 48, 114, 280, 676],
-                [4, 4, 12, 28, 68, 164, 396],
-                [0, 8, 16, 40, 96, 232],
-                [8, 8, 24, 56, 136],
-                [0, 16, 32, 80],
-                [16, 16, 48],
-                [0, 32],
-                [32]
-            ]
-
-            lattice = [s for s in sequences if s[0] < max_len]
-
-            # Now, build the parent_map from the generated lattice
-            parent_map = {}
-            for i in range(len(lattice) - 1):
-                level_above = lattice[i]
-                level_below = lattice[i+1]
-
-                for j in range(len(level_above) -1):
-                    child = level_above[j+1]
-                    parent1 = level_above[j]
-                    parent2 = level_below[j]
-
-                    if child not in parent_map:
-                         parent_map[child] = []
-                    parent_map[child].extend([parent1, parent2])
+        # The parent map defines ancestors based on the horizontal recurrence
+        parent_map = {}
+        for seq in lattice:
+            for i in range(2, len(seq)):
+                child = seq[i]
+                parent1 = seq[i-1]
+                parent2 = seq[i-2]
+                if child not in parent_map:
+                    parent_map[child] = []
+                parent_map[child].extend([parent1, parent2])
 
         return lattice, parent_map
 
