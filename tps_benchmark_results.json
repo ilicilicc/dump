@@ -1,0 +1,171 @@
+{
+  "hst_v3_ultra.py": {
+    "class_name": "HSTv3Ultra",
+    "params_M": 4.038508,
+    "config": {
+      "vocab_size": 5000,
+      "d_model": 128,
+      "n_layers": 6,
+      "n_heads": 4,
+      "max_seq_len": 512,
+      "horizon": 8
+    },
+    "results": {
+      "128": {
+        "avg_time_ms": 20.43637500000841,
+        "tps": 6263.341712996915,
+        "min_time_ms": 17.599109999991924,
+        "max_time_ms": 27.453564000097685
+      },
+      "256": {
+        "avg_time_ms": 28.855023000051006,
+        "tps": 8871.93886483984,
+        "min_time_ms": 27.755743999932747,
+        "max_time_ms": 30.027593000113484
+      },
+      "512": {
+        "avg_time_ms": 66.32331099995099,
+        "tps": 7719.759346760875,
+        "min_time_ms": 61.35043299991594,
+        "max_time_ms": 79.83187500008171
+      }
+    }
+  },
+  "hst_v4_unified.py": {
+    "class_name": "HSTv4Unified",
+    "params_M": 4.038508,
+    "config": {
+      "vocab_size": 5000,
+      "d_model": 128,
+      "n_layers": 6,
+      "n_heads": 4,
+      "max_seq_len": 512,
+      "horizon": 8,
+      "mode": "token",
+      "chunk_size": 64
+    },
+    "results": {
+      "128": {
+        "avg_time_ms": 17.978941399996984,
+        "tps": 7119.44030253202,
+        "min_time_ms": 17.494367999915994,
+        "max_time_ms": 18.494696000061595
+      },
+      "256": {
+        "avg_time_ms": 28.617636799981483,
+        "tps": 8945.532497643748,
+        "min_time_ms": 27.87451799986229,
+        "max_time_ms": 29.112359000009747
+      },
+      "512": {
+        "avg_time_ms": 67.00501000000259,
+        "tps": 7641.2196640218435,
+        "min_time_ms": 62.91834400008156,
+        "max_time_ms": 75.24315899991052
+      }
+    }
+  },
+  "hst_v5_2_unified.py": {
+    "class_name": "HSTv5_2Unified",
+    "params_M": 7.119708,
+    "config": {
+      "vocab_size": 5000,
+      "d_model": 128,
+      "n_layers": 6,
+      "n_heads": 4,
+      "max_seq_len": 512,
+      "horizon": 8,
+      "mode": "token",
+      "chunk_size": 64
+    },
+    "results": {
+      "128": {
+        "avg_time_ms": 22.345258800032752,
+        "tps": 5728.284516436766,
+        "min_time_ms": 21.545540000033725,
+        "max_time_ms": 23.404970000001413
+      },
+      "256": {
+        "avg_time_ms": 33.289256999978534,
+        "tps": 7690.168633086797,
+        "min_time_ms": 32.6544259999082,
+        "max_time_ms": 33.8759950000167
+      },
+      "512": {
+        "avg_time_ms": 68.75433820005128,
+        "tps": 7446.8028258850745,
+        "min_time_ms": 67.76620899995578,
+        "max_time_ms": 71.01264000016272
+      }
+    }
+  },
+  "hst_v6_giga.py": {
+    "class_name": "HSTv6Giga",
+    "params_M": 7.119708,
+    "config": {
+      "vocab_size": 5000,
+      "d_model": 128,
+      "n_layers": 6,
+      "n_heads": 4,
+      "max_seq_len": 512,
+      "horizon": 8,
+      "mode": "token",
+      "chunk_size": 64
+    },
+    "results": {
+      "128": {
+        "avg_time_ms": 22.430611199933992,
+        "tps": 5706.487391675563,
+        "min_time_ms": 21.582477000038125,
+        "max_time_ms": 23.156892999850243
+      },
+      "256": {
+        "avg_time_ms": 34.01097600003595,
+        "tps": 7526.981877842299,
+        "min_time_ms": 32.65811599999324,
+        "max_time_ms": 35.06228400010514
+      },
+      "512": {
+        "avg_time_ms": 70.55591120006284,
+        "tps": 7256.656335260312,
+        "min_time_ms": 67.58987900002467,
+        "max_time_ms": 79.88472700003513
+      }
+    }
+  },
+  "hst.v7.1_ultimate.py": {
+    "class_name": "HSTv7_1Ultimate",
+    "params_M": 57.287819,
+    "config": {
+      "vocab_size": 5000,
+      "d_model": 128,
+      "n_layers": 6,
+      "n_heads": 4,
+      "max_seq_len": 512,
+      "horizon": 8,
+      "mode": "token",
+      "chunk_size": 64,
+      "num_experts": 4
+    },
+    "results": {
+      "128": {
+        "avg_time_ms": 58.87685100001363,
+        "tps": 2174.0293141691695,
+        "min_time_ms": 57.45469399994363,
+        "max_time_ms": 61.368479000066145
+      },
+      "256": {
+        "avg_time_ms": 81.70713480003542,
+        "tps": 3133.141317787208,
+        "min_time_ms": 81.27342800003134,
+        "max_time_ms": 82.33678700003111
+      },
+      "512": {
+        "avg_time_ms": 144.1540937999889,
+        "tps": 3551.754837503195,
+        "min_time_ms": 143.00956900001438,
+        "max_time_ms": 145.2331640000466
+      }
+    }
+  }
+}

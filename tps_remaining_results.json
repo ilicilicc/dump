@@ -1,0 +1,107 @@
+{
+  "hst.v6.1.py": {
+    "class_name": "HSTv6Giga",
+    "params_M": 16.886166,
+    "config": {
+      "vocab_size": 5000,
+      "d_model": 128,
+      "n_layers": 8,
+      "n_heads": 4,
+      "max_seq_len": 512,
+      "horizon": 8,
+      "mode": "token",
+      "chunk_size": 64
+    },
+    "n_layers": 8,
+    "results": {
+      "128": {
+        "avg_time_ms": 27.922743000044647,
+        "tps": 4584.076858057796,
+        "min_time_ms": 26.79513099997166,
+        "max_time_ms": 30.067023999890807
+      },
+      "256": {
+        "avg_time_ms": 41.87433739998596,
+        "tps": 6113.52957193505,
+        "min_time_ms": 40.251118000014685,
+        "max_time_ms": 43.80024600004617
+      },
+      "512": {
+        "avg_time_ms": 84.56637259996569,
+        "tps": 6054.416007908653,
+        "min_time_ms": 83.44022100004622,
+        "max_time_ms": 85.75629899996784
+      }
+    }
+  },
+  "hst.v7.0_agile.py": {
+    "class_name": "HSTv7Agile",
+    "params_M": 21.205922,
+    "config": {
+      "vocab_size": 5000,
+      "d_model": 128,
+      "n_layers": 8,
+      "n_heads": 4,
+      "max_seq_len": 512,
+      "horizon": 8,
+      "mode": "token",
+      "chunk_size": 64
+    },
+    "n_layers": 8,
+    "results": {
+      "128": {
+        "avg_time_ms": 48.34024259994294,
+        "tps": 2647.897344233665,
+        "min_time_ms": 46.593522999955894,
+        "max_time_ms": 51.021674999901734
+      },
+      "256": {
+        "avg_time_ms": 87.48792019991924,
+        "tps": 2926.1182505540496,
+        "min_time_ms": 80.8280679998461,
+        "max_time_ms": 92.18196400001943
+      },
+      "512": {
+        "avg_time_ms": 205.4451238000638,
+        "tps": 2492.149682259049,
+        "min_time_ms": 199.17726300013783,
+        "max_time_ms": 213.80038300003434
+      }
+    }
+  },
+  "HST-chaos_logic_ai.py": {
+    "class_name": "HSTv7Agile",
+    "params_M": 21.205922,
+    "config": {
+      "vocab_size": 5000,
+      "d_model": 128,
+      "n_layers": 8,
+      "n_heads": 4,
+      "max_seq_len": 512,
+      "horizon": 8,
+      "mode": "token",
+      "chunk_size": 64
+    },
+    "n_layers": 8,
+    "results": {
+      "128": {
+        "avg_time_ms": 50.64388819996566,
+        "tps": 2527.4520687392005,
+        "min_time_ms": 47.17863699988811,
+        "max_time_ms": 56.64308800010076
+      },
+      "256": {
+        "avg_time_ms": 82.71808439994857,
+        "tps": 3094.849232269687,
+        "min_time_ms": 82.17432199990071,
+        "max_time_ms": 83.51796700003433
+      },
+      "512": {
+        "avg_time_ms": 181.18393580002703,
+        "tps": 2825.857589080608,
+        "min_time_ms": 180.6401190001452,
+        "max_time_ms": 181.66154999994433
+      }
+    }
+  }
+}
